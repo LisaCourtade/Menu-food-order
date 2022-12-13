@@ -116,7 +116,7 @@ return (
             <Meals meals={meals} onClick={(meal) => setBasket([...basket, meal])} />
         </div>
         <div className="container-basket">
-            <Basket meals={basket} />
+            <Basket meals={basket} updateBasket={setBasket} />
         </div>
     </div>
   );

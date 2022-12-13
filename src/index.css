@@ -107,3 +107,8 @@ h1 {
   font-weight: 500;
 }
 
+.total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
