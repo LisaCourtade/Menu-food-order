@@ -117,10 +117,10 @@ const seedMeals = [
     }
 ];
 
-Meal.insertMany(seedMeals)
-.then(res => {
-    console.log(res)
-})
-.catch(e => {
-    console.log(e)
-}) 
+// Meal.insertMany(seedMeals)
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(e => {
+//     console.log(e)
+// }) 

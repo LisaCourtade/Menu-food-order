@@ -1,3 +1,4 @@
+import React from 'react';
 const Ingredients = ({ meal, showIngr}) => { 
     if (showIngr) {
         return (
