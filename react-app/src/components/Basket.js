@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const Basket = ({meals, updateBasket}) => { 
+const Basket = ({meals, updateBasket}) => {    
     const addedId = meals.map(meal => {
         let createId = Math.floor(Math.random() * 100000);
         meal = {...meal, id: createId};
@@ -22,6 +22,8 @@ const Basket = ({meals, updateBasket}) => {
 
     return (
         <div>
+            <h2>Basket</h2>
+            {(totalPrice === 0) ? 'The basket is empty' : ''}
             {addedId.map( meal => {
                 const {name, price, id} = meal;
                 return (

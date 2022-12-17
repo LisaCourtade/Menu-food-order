@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Meal = require('./models/meal');
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/menu')
     .then(() => {
@@ -21,6 +21,11 @@ mongoose.connect('mongodb://localhost:27017/menu')
 app.get('/menu', async (req, res) => {
     const meals = await Meal.find({});
     res.send(meals)
+})
+
+app.post('/new', (req, res) => {
+    console.log((req.body))
+    res.send('post request')
 })
 
 app.listen(3010, () => {

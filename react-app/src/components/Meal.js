@@ -5,7 +5,7 @@ import Ingredients from './Ingredients'
 import Add from './Add'
 
 const Meal = ({ meal, onClick }) => { 
-    const [showIngredients, setShowIngr] = useState (false);
+    const [showIngredients, setShowIngr] = useState(false);
     return (
     <div className="meal">
         <div className="meal-header">

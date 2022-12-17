@@ -14,9 +14,19 @@ h1 {
   text-align: center;
 }
 
+.main-page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.menu-order {
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   max-width: 500px;
-  margin: 30px auto;
+  margin: 30px;
   overflow: auto;
   min-height: 300px;
   border: 1px solid rgb(185, 187, 190);
@@ -24,14 +34,9 @@ h1 {
   border-radius: 5px;
 }
 
-.container-basket {
-  max-width: 500px;
-  margin: 30px auto;
-  overflow: auto;
+.basket {
   min-height: fit-content;
-  border: 1px solid rgb(185, 187, 190);
-  padding: 30px;
-  border-radius: 5px;
+  min-width: 300px;
 }
 
 .header {
