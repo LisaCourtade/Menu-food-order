@@ -17,12 +17,36 @@ function App() {
             .then((data) => setMeals(data))
             .catch(e => console.log(e))
     }, [])
+
+    const handleDelete = (meal) => {
+        const copyMeals = [...meals];
+        const mealIndex = function() {
+            for (let i = 0; i < copyMeals.length; i++) {
+                if (copyMeals[i]._id === meal._id) {
+                    return i;
+                }
+            }
+        }
+        copyMeals.splice(mealIndex(), 1);
+        setMeals(copyMeals);
+
+        fetch("http://localhost:3010/delete", {
+            method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(meal) // body data type must match "Content-Type" header
+        }).then((res) => {
+            console.log(res)
+        }).catch(e => console.log(e))
+
+    }
     
     return (
         <div className='main-page'>
             <div className='container'>
                 <h1>Menu</h1>
-                <Meals meals={meals} onClick={(meal) => setBasket([...basket, meal])} />
+                <Meals meals={meals} onAdd={(meal) => setBasket([...basket, meal])} onDelete={handleDelete} />
             </div>
             <div className='menu-order'>
                 <div className='container basket'>

@@ -1,7 +1,7 @@
 import React from 'react';
-const Add = ({ meal, onClick }) => { 
+const Add = ({ meal, onAdd }) => { 
     return (
-    <button onClick={() => onClick(meal)} className="btn">
+    <button onClick={() => onAdd(meal)} className="btn">
         Add
     </button>
     )

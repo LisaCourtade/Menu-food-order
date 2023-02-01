@@ -25,9 +25,15 @@ app.get('/menu', async (req, res) => {
     res.send(meals);
 })
 
-app.post('/new', (req, res) => {
-    console.log(req.body);
-    res.send('works');
+app.post('/new', async (req, res) => {
+    const newMeal = new Meal(req.body);
+    await newMeal.save();
+    res.send({body: newMeal});
+})
+
+app.delete('/delete', async (req, res) => {
+    const id = req.body._id;
+    const meal = await Meal.findByIdAndDelete(id);
 })
 
 app.listen(3010, () => {
