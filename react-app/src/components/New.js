@@ -12,21 +12,19 @@ const New = ({showNew}) => {
             };
             fetch("http://localhost:3010/new", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'no-cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
                 headers: {
-                  'Content-Type': 'application/json'
-                  // 'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type':'application/json'
                 },
                 body: JSON.stringify(data) // body data type must match "Content-Type" header
-              })
-                .catch(e => console.log(e))
+            }).then((res) => {
+                console.log(res)
+            }).catch(e => console.log(e))
+
             console.log(data)
         }
         
         return (
-            <form onSubmit={handleClick} >
+            <form onSubmit={handleClick} method='POST'>
                 <label htmlFor='name'>Name </label>
                 <input type='text' placeholder='Name of the meal' name='name' id='name'/>
                 <br/>
