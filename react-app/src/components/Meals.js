@@ -2,11 +2,12 @@ import React from 'react';
 import Meal from './Meal'
 
 const Meals = ({ meals, onAdd, onDelete }) => {
+    
     const mealsWithKey = meals.map(meal => {
         let createId = Math.floor(Math.random() * 100000);
         meal = {...meal, keyId: createId};
         return meal;
-    })
+    });
 
     const snacks = mealsWithKey.filter(meal => meal.category === 'snack');
     const mains = mealsWithKey.filter(meal => meal.category === 'main');

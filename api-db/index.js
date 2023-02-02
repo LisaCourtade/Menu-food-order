@@ -28,12 +28,13 @@ app.get('/menu', async (req, res) => {
 app.post('/new', async (req, res) => {
     const newMeal = new Meal(req.body);
     await newMeal.save();
-    res.send({body: newMeal});
+    res.send(newMeal);
 })
 
 app.delete('/delete', async (req, res) => {
     const id = req.body._id;
     const meal = await Meal.findByIdAndDelete(id);
+    res.send('deleted')
 })
 
 app.listen(3010, () => {

@@ -7,8 +7,6 @@ import Add from './Add'
 const Meal = ({ meal, onAdd, onDelete}) => { 
     const [showIngredients, setShowIngr] = useState(false);
 
-
-    
     return (
     <div className="meal">
         <div className="meal-header">

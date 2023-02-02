@@ -14,7 +14,7 @@ function App() {
     useEffect(() => {
         fetch("http://localhost:3010/menu")
             .then((res) => res.json())
-            .then((data) => setMeals(data))
+            .then((data) => {setMeals(data)})
             .catch(e => console.log(e))
     }, [])
 
@@ -37,7 +37,7 @@ function App() {
             },
             body: JSON.stringify(meal) // body data type must match "Content-Type" header
         }).then((res) => {
-            console.log(res)
+            console.log(res, "response")
         }).catch(e => console.log(e))
 
     }
@@ -54,7 +54,7 @@ function App() {
                 </div>
                 <div className='container'>
                 <Button onClick={() => setShowNewMeal(!showNewMeal)} text='Create a new meal' className='btn' />
-                <New showNew={showNewMeal} /> 
+                <New showNew={showNewMeal} onNew={(meal) => setMeals([...meals, meal])} /> 
                 </div>
             </div>
         </div>
