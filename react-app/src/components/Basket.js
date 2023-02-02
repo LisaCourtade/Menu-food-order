@@ -30,7 +30,7 @@ const Basket = ({meals, updateBasket}) => {
                 return (
                 <div className="meal-header" key={basketId} >
                     <div>
-                        <Button onClick={() => handleClick(basketId)} text="X" className="btn remove" />
+                        <Button onClick={() => handleClick(basketId)} text="X" className="btn remove" show={true}/>
                         {name}
                     </div>
                     <div> {price.toFixed(2)} € </div>

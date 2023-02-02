@@ -1,17 +1,35 @@
 import React from 'react';
+import { useState } from 'react';
 
 const New = ({showNew, onNew}) => {  
+    const [ingredients, setIngredients] = useState([{ingredient: ''}]);
+
+    const handleFormChange = (index, event) => {
+        let data = [...ingredients];
+        data[index][event.target.name] = event.target.value;
+        setIngredients(data);
+    }
+
+    const addIngredientInput = () => {
+        let newInput = { ingredient: '' }
+        setIngredients([...ingredients, newInput]);
+    }
+
     if (showNew) {
         const handleClick = (e) => {
-            e.preventDefault();
+            e.preventDefault();           
+            let ingredientsArray = ingredients.map((ingr) => {
+                return ingr.ingredient
+            })
             let createId = Math.floor(Math.random() * 100000);
             const data = {
-                name: e.target.elements[0].value,
-                price: e.target.elements[1].value,
-                ingredients: [e.target.elements[2].value],
-                category: e.target.elements[3].value,
+                category: e.target.elements[0].value,
+                name: e.target.elements[1].value,
+                price: e.target.elements[2].value,
+                ingredients: ingredientsArray,
                 keyId: createId
             };
+            console.log(data)
             fetch("http://localhost:3010/new", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 headers: {
@@ -22,28 +40,41 @@ const New = ({showNew, onNew}) => {
                 onNew(data);
                 console.log(res)
             })
-            .catch(e => console.log(e))
-            
+            .catch(e => console.log(e));
+              
         }
         
         return (
             <form onSubmit={handleClick} method='POST'>
-                <label htmlFor='name'>Name </label>
-                <input type='text' placeholder='Name of the meal' name='name' id='name'/>
-                <br/>
-                <label htmlFor='price'>Price </label>
-                <input type='number' step="0.01" placeholder='0.00' name='price' id='price' />
-                <br/>
-                <label htmlFor='ingredient'>Ingredient </label>
-                <input placeholder='Ingredient' name='ingredient' id='ingredient'/>
-                <br/>
-                <select>
-                    <option value='snack'>Snack</option>
-                    <option value='main'>Main</option>
-                    <option value='dessert'>Dessert</option>
-                </select>
-                <br/>
-                <input type='submit'/>
+                <div>
+                    <label htmlFor='category'>Category </label>
+                    <select id="category">
+                        <option value='snack'>Snack</option>
+                        <option value='main'>Main</option>
+                        <option value='dessert'>Dessert</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor='name'>Name </label>
+                    <input type='text' name='name' id='name' placeholder='Name of the meal' />
+                </div>
+                <div>
+                    <label htmlFor='price'>Price </label>
+                    <input type='number' name='price' id='price' step="0.01" placeholder='0.00' />
+                </div> 
+                <label htmlFor='ingredient'>Ingredients </label>
+                {ingredients.map((ingr, index) => {
+                    return (
+                        <div key={index}>
+                            <input type='text' name='ingredient' id='ingredient' placeholder='Ingredient' value={ingr.ingredient} onChange={e => handleFormChange(index, e)} />       
+                        </div>    
+                    )
+                })}
+                <button type="button" onClick={addIngredientInput}>Add another ingredient</button>
+                
+                <div>
+                    <input type='submit' className='btn' />
+                </div>
             </form>
         )
     }

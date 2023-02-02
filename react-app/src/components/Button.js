@@ -1,11 +1,12 @@
 import React from 'react';
-const Button = ({onClick, text, className}) => { 
-    return (
-    <button onClick={onClick} className={className}>
-        {text}
-    </button>
-    )
-
+const Button = ({onClick, text, className, show}) => { 
+    if (show) {
+        return (
+        <button onClick={onClick} className={className}>
+            {text}
+        </button>
+        )
+    }
 } 
 
 

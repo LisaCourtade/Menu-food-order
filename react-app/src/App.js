@@ -53,7 +53,7 @@ function App() {
                     <Basket meals={basket} updateBasket={setBasket} />
                 </div>
                 <div className='container'>
-                <Button onClick={() => setShowNewMeal(!showNewMeal)} text='Create a new meal' className='btn' />
+                <Button onClick={() => setShowNewMeal(!showNewMeal)} text='Create a new meal' className='btn' show={!showNewMeal} />
                 <New showNew={showNewMeal} onNew={(meal) => setMeals([...meals, meal])} /> 
                 </div>
             </div>

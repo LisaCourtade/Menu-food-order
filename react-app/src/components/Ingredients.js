@@ -4,7 +4,7 @@ const Ingredients = ({ meal, showIngr}) => {
         return (
             <ul className="ingr-list">
                 {
-                    meal.ingredients.map((ingr) => <li>{ingr}</li>)
+                    meal.ingredients.map((ingr, i) => <li key={i}>{ingr}</li>)
                 }
             </ul>
         )

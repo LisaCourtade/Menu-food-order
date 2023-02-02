@@ -15,7 +15,7 @@ const Meal = ({ meal, onAdd, onDelete}) => {
             <div>
                 <Button onClick={() => setShowIngr(!showIngredients)} text={ !showIngredients ? 'See ingredients' : 'Hide ingredients'} className="btn-ingr" />
                 <Add meal={meal} onAdd={onAdd} />
-                <Button onClick={() => onDelete(meal)} text="X" className="btn"/>
+                <Button onClick={() => onDelete(meal)} text="X" className="btn" show={true} />
             </div>
         </div>
         <Ingredients meal={meal} showIngr={showIngredients} />
