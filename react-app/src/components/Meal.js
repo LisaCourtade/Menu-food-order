@@ -13,7 +13,7 @@ const Meal = ({ meal, onAdd, onDelete}) => {
             <h3>{meal.name.toUpperCase()}</h3>
             <h4>{meal.price} €</h4>
             <div>
-                <Button onClick={() => setShowIngr(!showIngredients)} text={ !showIngredients ? 'See ingredients' : 'Hide ingredients'} className="btn-ingr" />
+                <Button onClick={() => setShowIngr(!showIngredients)} text={ !showIngredients ? 'See ingredients' : 'Hide ingredients'} className="btn-ingr" show={true}/>
                 <Add meal={meal} onAdd={onAdd} />
                 <Button onClick={() => onDelete(meal)} text="X" className="btn" show={true} />
             </div>
