@@ -1,15 +1,10 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import '../index.css';
-import Meals from '../components/Meals';
-import Basket from '../components/Basket';
-import Button from '../components/Button';
-import New from '../components/New';
+import React, { useEffect, useState } from 'react';
+import Meals from './components/Meals';
+import New from './components/New';
+import '../../index.css';
 
-export function Order() {
+export default function Menu() {
     const [meals, setMeals] = useState([]);
-    const [basket, setBasket] = useState([]);
-    const [showNewMeal, setShowNewMeal] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3010/menu")
@@ -46,15 +41,12 @@ export function Order() {
         <div className='main-page'>
             <div className='container'>
                 <h1>Menu</h1>
-                <Meals meals={meals} onAdd={(meal) => setBasket([...basket, meal])} onDelete={handleDelete} />
+                <Meals meals={meals} isAdd={false} onClick={handleDelete} />
             </div>
             <div className='menu-order'>
-                <div className='container basket'>
-                    <Basket meals={basket} updateBasket={setBasket} />
-                </div>
                 <div className='container'>
-                <Button onClick={() => setShowNewMeal(!showNewMeal)} text='Create a new meal' className='btn' show={!showNewMeal} />
-                <New showNew={showNewMeal} onNew={(meal) => setMeals([...meals, meal])} /> 
+                    <h2>Add a new meal</h2>
+                    <New onNew={(meal) => setMeals([...meals, meal])} /> 
                 </div>
             </div>
         </div>

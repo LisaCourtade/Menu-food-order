@@ -1,7 +1,7 @@
 import React from 'react';
-import Meal from './Meal'
+import Meal from './Meal';
 
-const Meals = ({ meals, onAdd, onDelete }) => {
+const Meals = ({ meals, isAdd, onClick }) => {
     
     const mealsWithKey = meals.map(meal => {
         let createId = Math.floor(Math.random() * 100000);
@@ -20,19 +20,19 @@ const Meals = ({ meals, onAdd, onDelete }) => {
             <h2>Snacks</h2>
             {
                 snacks.map((meal) => {
-                    return <Meal meal={meal} onAdd={onAdd} key={meal.keyId} onDelete={onDelete} />
+                    return <Meal meal={meal} key={meal.keyId} isAdd={isAdd}  onClick={onClick} />
                 })
             }
             <h2>Mains</h2>
             {
                 mains.map((meal) => {
-                    return <Meal meal={meal} onAdd={onAdd} key={meal.keyId} onDelete={onDelete} />
+                    return <Meal meal={meal} key={meal.keyId} isAdd={isAdd}  onClick={onClick}/>
                 })
             }
             <h2>Desserts</h2>
             {
                 desserts.map((meal) => {
-                    return <Meal meal={meal} onAdd={onAdd} key={meal.keyId} onDelete={onDelete} />
+                    return <Meal meal={meal} key={meal.keyId} isAdd={isAdd}  onClick={onClick} />
                 })
             }
         </>

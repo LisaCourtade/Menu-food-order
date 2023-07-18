@@ -1,10 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import Button from './Button'
+import React, { useState } from 'react';
+import Button from '../../../components/Button'
 import Ingredients from './Ingredients'
-import Add from './Add'
+import Add from '../../../components/Add'
 
-const Meal = ({ meal, onAdd, onDelete}) => { 
+const Meal = ({ meal, isAdd, onClick}) => { 
     const [showIngredients, setShowIngr] = useState(false);
 
     return (
@@ -14,8 +13,10 @@ const Meal = ({ meal, onAdd, onDelete}) => {
             <h4>{meal.price} €</h4>
             <div>
                 <Button onClick={() => setShowIngr(!showIngredients)} text={ !showIngredients ? 'See ingredients' : 'Hide ingredients'} className="btn-ingr" show={true}/>
-                <Add meal={meal} onAdd={onAdd} />
-                <Button onClick={() => onDelete(meal)} text="X" className="btn" show={true} />
+                {isAdd ? 
+                    <Add meal={meal} onAdd={onClick} /> :
+                    <Button onClick={() => onClick(meal)} text="X" className="btn" show={true} />
+                }
             </div>
         </div>
         <Ingredients meal={meal} showIngr={showIngredients} />
